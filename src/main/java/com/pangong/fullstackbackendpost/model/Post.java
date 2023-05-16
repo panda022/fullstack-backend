@@ -1,57 +1,39 @@
 package com.pangong.fullstackbackendpost.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.util.HashSet;
+import java.util.Set;
+
+//@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+
 
 @Entity
+@Table(
+        name = "posts",uniqueConstraints = {@UniqueConstraint(columnNames = {"title"})}
+)
 public class Post {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(
+            strategy = GenerationType.IDENTITY
+    )
     private Long id;
+    @Column(name = "image",nullable = false)
     private String image;
+    @Column(name = "title",nullable = false)
     private String title;
-    private String address;
+    @Column(name = "description",nullable = false)
     private String description;
+    @Column(name = "content",nullable = false)
+    private String content;
 
-    public Long getId() {
-        return id;
-    }
+    @OneToMany(mappedBy = "post")
+    private Set<Comment> comments = new HashSet<>();
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 }

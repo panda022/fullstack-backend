@@ -1,9 +1,9 @@
 package com.pangong.fullstackbackendpost.controller;
 
-import com.pangong.fullstackbackendpost.exception.PostNotFoundException;
-import com.pangong.fullstackbackendpost.model.Post;
-import com.pangong.fullstackbackendpost.repository.PostRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.pangong.fullstackbackendpost.dtos.PostDto;
+import com.pangong.fullstackbackendpost.service.PostService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,49 +12,47 @@ import java.util.List;
 //test on the local host
 @CrossOrigin("http://localhost:3000")
 
+@RequestMapping("/api/posts")
+
 //change the origin as deploy to aws
 //@CrossOrigin(origins = "*")
 public class PostController {
+    private PostService postService;
 
-    @Autowired
-    private PostRepository postRepository;
-
-    @PostMapping("/api/post")
-    Post newPost(@RequestBody Post newPost) {
-        return postRepository.save(newPost);
+    public PostController(PostService postService) {
+        this.postService = postService;
     }
 
-    @GetMapping("/api/posts")
-    List<Post> getAllPosts() {
-        return postRepository.findAll();
+    //create post
+    @PostMapping
+    public ResponseEntity<PostDto> createPost(@RequestBody PostDto postDto){
+        return new ResponseEntity<>(postService.createPost(postDto), HttpStatus.CREATED);
     }
 
-    @GetMapping("/api/post/{id}")
-    Post getPostById(@PathVariable Long id) {
-        return postRepository.findById(id)
-                .orElseThrow(()->new PostNotFoundException(id));
+    //get all posts within rest api
+    @GetMapping
+    public List<PostDto> getAllPosts(){
+        return postService.getAllPosts();
     }
 
-    @PutMapping("/api/post/{id}")
-    Post updatePost(@RequestBody Post newPost, @PathVariable Long id) {
-        return postRepository.findById(id)
-                .map(post -> {
-                    post.setTitle(newPost.getTitle());
-                    post.setImage(newPost.getImage());
-                    post.setAddress(newPost.getAddress());
-                    post.setDescription(newPost.getDescription());
-
-                    return postRepository.save(post);
-                }).orElseThrow(() -> new PostNotFoundException(id));
+    @GetMapping("/{id}")
+    public ResponseEntity<PostDto> getPostById(@PathVariable(name = "id") Long id){
+        return ResponseEntity.ok(postService.getPostById(id));
     }
 
-    @DeleteMapping("/api/post/{id}")
-    String deletePost(@PathVariable Long id){
-        if(!postRepository.existsById(id)){
-            throw new PostNotFoundException(id);
-        }
-        postRepository.deleteById(id);
-        return  "Post with id "+id+" has been deleted success.";
+    @PutMapping("/{id}")
+    public ResponseEntity<PostDto> updatePostById(@RequestBody PostDto postDto,@PathVariable(name = "id") long id){
+        return new ResponseEntity<>(postService.updatePostById(postDto,id),HttpStatus.OK);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deletePostById(@PathVariable(name="id") long id){
+        postService.deletePostById(id);
+        return new ResponseEntity<>("Post with id "+id+"has been deleted successfully",HttpStatus.OK);
+    }
+
+
+
+
 
 }

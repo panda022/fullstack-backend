@@ -1,16 +1,20 @@
 package com.pangong.fullstackbackendpost.exception;
 
 import com.pangong.fullstackbackendpost.dtos.ErrorDetails;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
+import org.springframework.validation.BindException;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import java.util.Date;
+import java.util.HashMap;
 
 @ControllerAdvice
-public class GlobalExceptionHandler {
+public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     //handle specific exception(ResorceNotFound)
     @ExceptionHandler(ResourceNotFoundException.class)
@@ -32,12 +36,30 @@ public class GlobalExceptionHandler {
 
     //handle other exceptions
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<ErrorDetails> handleException(Exception exception,
+    public ResponseEntity<ErrorDetails> handleGlobalException(Exception exception,
                                                                WebRequest webRequest){
         ErrorDetails errorDetails = new ErrorDetails(new Date(),exception.getMessage(),
                 webRequest.getDescription(false));
         return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+    @Override
+    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
+                                                                  HttpHeaders headers,
+                                                                  HttpStatusCode status,
+                                                                  WebRequest request) {
+        HashMap<String,String> errors = new HashMap<>();
+        ex.getBindingResult().getAllErrors().forEach((error)->{
+            String fileName = ((FieldError)error).getField();
+            String message = error.getDefaultMessage();
+            errors.put(fileName,message);
+        });
+        return new ResponseEntity<>(errors,HttpStatus.BAD_REQUEST);
+    }
+
+
+
+
 
 
 

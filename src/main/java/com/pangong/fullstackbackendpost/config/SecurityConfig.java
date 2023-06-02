@@ -38,11 +38,23 @@ public class SecurityConfig {
                         //authorize.anyRequest().authenticated())
                         //for get method, permit all request without authenticating
                         authorize.requestMatchers(HttpMethod.GET,"/api/**").permitAll()
+                                .requestMatchers("/api/auth/**").permitAll()
                                 //apart from get method, authenticate these requests
                                 .anyRequest().authenticated()
-                ).httpBasic(Customizer.withDefaults());
+                );
         return http.build();
     }
+//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//        http.csrf().disable()
+//                .authorizeHttpRequests((authorize)->
+//                        //authorize.anyRequest().authenticated())
+//                        //for get method, permit all request without authenticating
+//                        authorize.requestMatchers(HttpMethod.GET,"/api/**").permitAll()
+//                                //apart from get method, authenticate these requests
+//                                .anyRequest().authenticated()
+//                ).httpBasic(Customizer.withDefaults());
+//        return http.build();
+//    }
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {

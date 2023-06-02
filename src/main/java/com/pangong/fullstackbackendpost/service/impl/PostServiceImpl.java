@@ -50,9 +50,9 @@ public class PostServiceImpl implements PostService {
         //get post by id from the database
         Post post = postRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("post","id",id));
 
-        //update the concent of postDto,changes the state of the in-memory Java object
-        post.setImage(post.getImage());
-        post.setDescription(post.getDescription());
+        //update the content of postDto,changes the state of the in-memory Java object
+        post.setImage(postDto.getImage());
+        post.setDescription(postDto.getDescription());
         post.setTitle(postDto.getTitle());
         post.setContent(postDto.getContent());
 

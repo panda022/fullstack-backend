@@ -44,6 +44,11 @@ public class PostController {
         return ResponseEntity.ok(postService.getPostById(id));
     }
 
+    @GetMapping("/search")
+    public ResponseEntity<List<PostDto>> searchPosts(@RequestParam("query") String query){
+        return ResponseEntity.ok(postService.searchPosts(query));
+    }
+
     @PutMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<PostDto> updatePostById(@Valid @RequestBody PostDto postDto,@PathVariable(name = "id") long id){
@@ -56,6 +61,8 @@ public class PostController {
         postService.deletePostById(id);
         return new ResponseEntity<>("Post with id "+id+"has been deleted successfully",HttpStatus.OK);
     }
+
+
 
 
 

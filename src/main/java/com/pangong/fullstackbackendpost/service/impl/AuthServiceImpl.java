@@ -7,6 +7,7 @@ import com.pangong.fullstackbackendpost.model.Role;
 import com.pangong.fullstackbackendpost.model.User;
 import com.pangong.fullstackbackendpost.repository.RoleRepository;
 import com.pangong.fullstackbackendpost.repository.UserRepository;
+import com.pangong.fullstackbackendpost.security.JwtTokenProvider;
 import com.pangong.fullstackbackendpost.service.AuthService;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
@@ -27,14 +28,17 @@ public class AuthServiceImpl implements AuthService {
     private RoleRepository roleRepository;
     private PasswordEncoder passwordEncoder;
     private ModelMapper modelMapper;
+    private JwtTokenProvider jwtTokenProvider;
 
     public AuthServiceImpl(AuthenticationManager authenticationManager, UserRepository userRepository,
-                           RoleRepository roleRepository, PasswordEncoder passwordEncoder, ModelMapper modelMapper) {
+                           RoleRepository roleRepository, PasswordEncoder passwordEncoder,
+                           ModelMapper modelMapper,JwtTokenProvider jwtTokenProvider) {
         this.authenticationManager = authenticationManager;
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
         this.modelMapper = modelMapper;
+        this.jwtTokenProvider = jwtTokenProvider;
     }
 
     @Override
@@ -42,7 +46,9 @@ public class AuthServiceImpl implements AuthService {
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken
                 (loginDto.getUsernameOrEmail(),loginDto.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        return "User Log in successfully";
+
+        String token = jwtTokenProvider.generateToken(authentication);
+        return token;
     }
 
     @Override

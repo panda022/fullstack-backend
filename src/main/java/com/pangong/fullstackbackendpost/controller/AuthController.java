@@ -1,6 +1,7 @@
 package com.pangong.fullstackbackendpost.controller;
 
 
+import com.pangong.fullstackbackendpost.dtos.JwtAuthResponse;
 import com.pangong.fullstackbackendpost.dtos.LoginDto;
 import com.pangong.fullstackbackendpost.dtos.PostDto;
 import com.pangong.fullstackbackendpost.dtos.RegisterDto;
@@ -27,9 +28,11 @@ public class AuthController {
     //Login REST API
     //value ={"",""} multiple url for rest api
     @PostMapping(value = {"/login","/signin"})
-    public ResponseEntity<String> login(@RequestBody LoginDto loginDto){
-        String response = authService.login(loginDto);
-        return ResponseEntity.ok(response);
+    public ResponseEntity<JwtAuthResponse> login(@RequestBody LoginDto loginDto){
+        String token = authService.login(loginDto);
+        JwtAuthResponse jwtAuthResponse = new JwtAuthResponse();
+        jwtAuthResponse.setAccessToken(token);
+        return ResponseEntity.ok(jwtAuthResponse);
     }
     //Register REST API
     @PostMapping(value = {"/register","/signup"})

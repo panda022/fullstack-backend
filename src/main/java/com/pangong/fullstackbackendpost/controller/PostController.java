@@ -1,6 +1,7 @@
 package com.pangong.fullstackbackendpost.controller;
 
 import com.pangong.fullstackbackendpost.dtos.PostDto;
+import com.pangong.fullstackbackendpost.dtos.PostResponse;
 import com.pangong.fullstackbackendpost.service.PostService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -33,11 +34,19 @@ public class PostController {
         return new ResponseEntity<>(postService.createPost(postDto), HttpStatus.CREATED);
     }
 
-    //get all posts within rest api
+//    //get all posts within rest api
+//    @GetMapping
+//    public List<PostDto> getAllPosts(){
+//        return postService.getAllPosts();
+//    }
+
+    //get all posts within rest api with pagination
     @GetMapping
-    public List<PostDto> getAllPosts(){
-        return postService.getAllPosts();
+    public PostResponse getAllPosts(@RequestParam(value = "pageNo",defaultValue = "0",required = false) int pageNo,
+                                    @RequestParam(value = "pageSize",defaultValue = "10",required = false) int pageSize){
+        return postService.getAllPosts(pageNo,pageSize);
     }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<PostDto> getPostById(@PathVariable(name = "id") Long id){

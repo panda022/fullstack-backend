@@ -1,13 +1,15 @@
 package com.pangong.fullstackbackendpost.service;
 
 import com.pangong.fullstackbackendpost.dtos.PostDto;
+import com.pangong.fullstackbackendpost.dtos.PostResponse;
 
 import java.util.List;
 
 public interface PostService {
     PostDto createPost(PostDto postDto);
 
-    List<PostDto> getAllPosts();
+//    List<PostDto> getAllPosts();
+    PostResponse getAllPosts(int pageNo, int pageSize);
 
     PostDto getPostById(long id);
 

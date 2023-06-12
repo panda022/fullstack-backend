@@ -2,6 +2,8 @@ package com.pangong.fullstackbackendpost.config;
 
 import com.pangong.fullstackbackendpost.security.JwtAuthenticationEntryPoint;
 import com.pangong.fullstackbackendpost.security.JwtAuthenticationFilter;
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
+import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -24,6 +26,12 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 //To configure method level security
 @EnableMethodSecurity
+@SecurityScheme(
+        name = "Bear Authentication",
+        type = SecuritySchemeType.HTTP,
+        bearerFormat = "JWT",
+        scheme = "bearer"
+)
 public class SecurityConfig {
     private UserDetailsService userDetailsService;
     private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
@@ -48,6 +56,12 @@ public class SecurityConfig {
                         //for get method, permit all request without authenticating
                         authorize.requestMatchers(HttpMethod.GET,"/api/**").permitAll()
                                 .requestMatchers("/api/auth/**").permitAll()
+//                                .requestMatchers("/api/posts/{postId}/comments/{commentId}").permitAll()
+//                                .requestMatchers("/api/posts/{postId}/comments/**").permitAll()
+                                .requestMatchers("/swagger-ui/**").permitAll()
+                                .requestMatchers("/v3/api-docs/**").permitAll()
+                                .requestMatchers("/favicon/**").permitAll()
+                                .requestMatchers("/actuator/**").permitAll()
                                 //apart from get method, authenticate these requests
                                 .anyRequest().authenticated()
                 ).exceptionHandling( exception -> exception.authenticationEntryPoint(jwtAuthenticationEntryPoint)

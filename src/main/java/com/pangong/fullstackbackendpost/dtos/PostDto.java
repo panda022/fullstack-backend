@@ -44,4 +44,11 @@ public class PostDto {
     private String content;
     private Set<CommentDto> comments;
 
+    public PostDto(String image, String title, String description, String content) {
+        this.image = image;
+        this.title = title;
+        this.description = description;
+        this.content = content;
+    }
+
 }

@@ -36,4 +36,10 @@ public class Post {
     @OneToMany(mappedBy = "post")
     private Set<Comment> comments = new HashSet<>();
 
+    public Post(String image, String title, String description, String content) {
+        this.image = image;
+        this.title = title;
+        this.description = description;
+        this.content = content;
+    }
 }

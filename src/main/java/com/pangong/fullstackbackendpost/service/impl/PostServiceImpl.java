@@ -104,7 +104,8 @@ public class PostServiceImpl implements PostService {
     }
 
     //help method, which converts Entity into Dto
-    private PostDto mapToDto(Post post){
+    //it should be private but changed to public for sake of test
+    public PostDto mapToDto(Post post){
         PostDto postDto = modelMapper.map(post,PostDto.class);
         return postDto;
 
@@ -117,7 +118,8 @@ public class PostServiceImpl implements PostService {
 //        return postDto;
     }
     //help method which converts Dto to entity
-    private Post mapToEntity(PostDto postDto){
+    //it should be private but changed to public for sake of test
+    public Post mapToEntity(PostDto postDto){
         Post post = modelMapper.map(postDto,Post.class);
         return post;
 

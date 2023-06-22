@@ -137,6 +137,7 @@
 
 			</plugin>
 		</plugins>
+		<finalName>blog-backend-app</finalName>
 	</build>
 
 </project>

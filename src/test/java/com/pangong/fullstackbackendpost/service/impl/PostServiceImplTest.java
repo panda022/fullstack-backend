@@ -47,10 +47,7 @@ class PostServiceImplTest {
     @Test
     void createPost() {
         //given
-        PostDto postDto = new PostDto("www.image.jpg",
-                "postTitle1",
-                "Test this post",
-                "test search post");
+        PostDto postDto = new PostDto();
         Post post = new Post("www.image.jpg",
                 "postTitle1",
                 "Test this post",
@@ -113,10 +110,7 @@ class PostServiceImplTest {
     @Test
     void updatePostByIdSuccessfully() {
         //given
-        PostDto postDto = new PostDto("www.image.jpg",
-                "postTitle1",
-                "Test this post",
-                "test search post");
+        PostDto postDto = new PostDto();
         Post post = new Post("www.image.jpg",
                 "postTitle1",
                 "Test this post",
@@ -133,10 +127,7 @@ class PostServiceImplTest {
     void updatePostByIdUnsuccessfully() {
         //given
         long id = 0;
-        PostDto postDto = new PostDto("www.image.jpg",
-                "postTitle1",
-                "Test this post",
-                "test search post");
+        PostDto postDto = new PostDto();
         Post post = new Post("www.image.jpg",
                 "postTitle1",
                 "Test this post",
@@ -212,10 +203,7 @@ class PostServiceImplTest {
     @Test
     void mapToEntity() {
         //given
-        PostDto postDto = new PostDto("www.image.jpg",
-                "postTitle1",
-                "Test this post",
-                "test search post");
+        PostDto postDto = new PostDto();
         //when
         underTest.mapToEntity(postDto);
         //then

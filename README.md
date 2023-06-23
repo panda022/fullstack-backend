@@ -4,10 +4,10 @@ This project will create full-stack CRUD ( Create, Read, Update, Delete) backend
 Components. Finally, the project will build Web Services (REST API) using Spring and Mysql on Backend 
 and Test using PostMan and then handle the same REST API on react in frontend using Axios. 
 
-Aws domain:http://pan-gong-blog.us-east-1.elasticbeanstalk.com/
-try get actutor endpoints :[http://pan-gong-blog.us-east-1.elasticbeanstalk.com/actuator](http://pan-gong-blog.us-east-1.elasticbeanstalk.com/actuator)
-or  get all posts : [http://pan-gong-blog.us-east-1.elasticbeanstalk.com/api/posts](http://pan-gong-blog.us-east-1.elasticbeanstalk.com/api/posts)
-or  get swagger ui :[http://pan-gong-blog.us-east-1.elasticbeanstalk.com/swagger-ui/index.html#/](http://pan-gong-blog.us-east-1.elasticbeanstalk.com/swagger-ui/index.html#/)
+## Aws domain:http://pan-gong-blog.us-east-1.elasticbeanstalk.com/
+### try get actutor endpoints :[http://pan-gong-blog.us-east-1.elasticbeanstalk.com/actuator](http://pan-gong-blog.us-east-1.elasticbeanstalk.com/actuator)
+### or  get all posts : [http://pan-gong-blog.us-east-1.elasticbeanstalk.com/api/posts](http://pan-gong-blog.us-east-1.elasticbeanstalk.com/api/posts)
+### or  get swagger ui :[http://pan-gong-blog.us-east-1.elasticbeanstalk.com/swagger-ui/index.html#/](http://pan-gong-blog.us-east-1.elasticbeanstalk.com/swagger-ui/index.html#/)
 
 As a second-year computer science student, I learned many academic courses like intro to web development(HTML, CSS, javascript), oop(Java), and intro to Database.
 I would like to combine all I learned to apply them to real-world --- build my own blog website, implements features including the crud of post and comment,
@@ -43,7 +43,7 @@ During this development, I learned the following concept:
 ## The Architecture of the automated deployment on the AWS, generation of the analysis report, building the docker image
 The Architecture of the automated deployment on the AWS using  GitHub, CodePipeline(CICD), RDS and Elastic Beanstalk
 The generation of the analysis report, building the docker image using maven on the local machine
-
+![Deployment diagram](https://github.com/panda022/fullstack-backend/assets/105373708/5ffc358c-e8ce-4880-b349-45ff084d5b3f)
 
 
 ## API Endpoints (CRUD):

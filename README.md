@@ -35,7 +35,9 @@ During this development, I learned the following concept:
 
 
 Blog API Spring-boot Flow Architecture:
-![Blog API Spring-boot Flow Architecture](https://github.com/panda022/fullstack-backend/assets/105373708/7b823113-e5ea-4cae-90d5-16b66591e5f1)
+![Blog API Spring-boot Flow Architecture](https://github.com/panda022/fullstack-backend/assets/105373708/22ea4a02-8aa4-45d2-ab6e-0af5b9e65d0c)
+
+API Endpoints (CRUD):
 
 
 Unit test example for postRepository and for postServiceImpl:

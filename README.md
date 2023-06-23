@@ -34,8 +34,11 @@ During this development, I learned the following concept:
 
 
 
-Application Architecture:
-![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://myoctocat.com/assets/images/base-octocat.svg)
+Blog API Spring-boot Flow Architecture:
+![Blog API Spring-boot Flow Architecture](https://github.com/panda022/fullstack-backend/assets/105373708/7b823113-e5ea-4cae-90d5-16b66591e5f1)
 
+
+Unit test example for postRepository and for postServiceImpl:
 ![test-results-PostRepository](https://github.com/panda022/fullstack-backend/assets/105373708/d9146e83-3117-4595-a3b0-663dc5f017b0)
 
+![test-results-PostServiceImpl](https://github.com/panda022/fullstack-backend/assets/105373708/1f32c2e4-2128-4353-9fb0-a65887a7a3cd)

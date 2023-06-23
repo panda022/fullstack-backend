@@ -46,7 +46,7 @@ The generation of the analysis report, building the docker image using maven on 
 ![Deployment diagram](https://github.com/panda022/fullstack-backend/assets/105373708/5ffc358c-e8ce-4880-b349-45ff084d5b3f)
 
 
-## API Endpoints (CRUD):
+## API Endpoints (CRUD): See Swagger-ui in the back part
 
 ## ER diagram
 ![ER diagram for blog entities](https://github.com/panda022/fullstack-backend/assets/105373708/7a484dac-52b4-4a0f-b445-2badf3ab2e8b)
@@ -58,6 +58,7 @@ APA:
 bezkoder. (2019, October 15). Spring Boot Token based Authentication with Spring Security & JWT. BezKoder. https://www.bezkoder.com/spring-boot-jwt-authentication/
 
 ## Swagger-ui
+## get swagger ui :[http://pan-gong-blog.us-east-1.elasticbeanstalk.com/swagger-ui/index.html#/](http://pan-gong-blog.us-east-1.elasticbeanstalk.com/swagger-ui/index.html#/)
 ![pan-gong-blog us-east-1 elasticbeanstalk com_swagger-ui_index html](https://github.com/panda022/fullstack-backend/assets/105373708/13d8e691-3606-45ad-82ec-16cf06986e4b)
 
 

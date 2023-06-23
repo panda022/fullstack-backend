@@ -4,7 +4,10 @@ This project will create full-stack CRUD ( Create, Read, Update, Delete) backend
 Components. Finally, the project will build Web Services (REST API) using Spring and Mysql on Backend 
 and Test using PostMan and then handle the same REST API on react in frontend using Axios. 
 
-link:(https://pangong.dev/)
+Aws domain:http://pan-gong-blog.us-east-1.elasticbeanstalk.com/
+try get actutor endpoints :[http://pan-gong-blog.us-east-1.elasticbeanstalk.com/actuator](http://pan-gong-blog.us-east-1.elasticbeanstalk.com/actuator)
+or  get all posts : [http://pan-gong-blog.us-east-1.elasticbeanstalk.com/api/posts](http://pan-gong-blog.us-east-1.elasticbeanstalk.com/api/posts)
+or  get swagger ui :[http://pan-gong-blog.us-east-1.elasticbeanstalk.com/swagger-ui/index.html#/](http://pan-gong-blog.us-east-1.elasticbeanstalk.com/swagger-ui/index.html#/)
 
 As a second-year computer science student, I learned many academic courses like intro to web development(HTML, CSS, javascript), oop(Java), and intro to Database.
 I would like to combine all I learned to apply them to real-world --- build my own blog website, implements features including the crud of post and comment,
@@ -37,7 +40,10 @@ During this development, I learned the following concept:
 ## Blog API Spring-boot Flow Architecture:
 ![Blog API Spring-boot Flow Architecture](https://github.com/panda022/fullstack-backend/assets/105373708/22ea4a02-8aa4-45d2-ab6e-0af5b9e65d0c)
 
-## The Architecture of the automated deployment on the AWS using  GitHub, CodePipeline(CICD),RDS and Elastic Beanstalk 
+## The Architecture of the automated deployment on the AWS, generation of the analysis report, building the docker image
+The Architecture of the automated deployment on the AWS using  GitHub, CodePipeline(CICD), RDS and Elastic Beanstalk
+The generation of the analysis report, building the docker image using maven on the local machine
+
 
 
 ## API Endpoints (CRUD):
@@ -45,6 +51,9 @@ During this development, I learned the following concept:
 ## ER diagram
 ![ER diagram for blog entities](https://github.com/panda022/fullstack-backend/assets/105373708/7a484dac-52b4-4a0f-b445-2badf3ab2e8b)
 
+## Spring Boot Signup & Login with JWT Authentication Flow
+![Spring Boot Signup & Login with JWT Authentication Flow](https://www.bezkoder.com/wp-content/uploads/2021/04/spring-boot-refresh-token-jwt-example-flow.png)
+bezkoder. (2019, October 15). Spring Boot Token based Authentication with Spring Security & JWT. BezKoder. https://www.bezkoder.com/spring-boot-jwt-authentication/
 
 ## Swagger-ui
 ![pan-gong-blog us-east-1 elasticbeanstalk com_swagger-ui_index html](https://github.com/panda022/fullstack-backend/assets/105373708/13d8e691-3606-45ad-82ec-16cf06986e4b)

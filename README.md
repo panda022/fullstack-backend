@@ -53,6 +53,8 @@ The generation of the analysis report, building the docker image using maven on 
 
 ## Spring Boot Signup & Login with JWT Authentication Flow
 ![Spring Boot Signup & Login with JWT Authentication Flow](https://www.bezkoder.com/wp-content/uploads/2021/04/spring-boot-refresh-token-jwt-example-flow.png)
+
+APA:
 bezkoder. (2019, October 15). Spring Boot Token based Authentication with Spring Security & JWT. BezKoder. https://www.bezkoder.com/spring-boot-jwt-authentication/
 
 ## Swagger-ui

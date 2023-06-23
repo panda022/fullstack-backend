@@ -36,3 +36,6 @@ During this development, I learned the following concept:
 
 Application Architecture:
 ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://myoctocat.com/assets/images/base-octocat.svg)
+
+![test-results-PostRepository](https://github.com/panda022/fullstack-backend/assets/105373708/d9146e83-3117-4595-a3b0-663dc5f017b0)
+
